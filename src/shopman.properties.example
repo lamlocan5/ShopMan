@@ -1,0 +1,5 @@
+# Copy to src/shopman.properties, then rebuild/publish the project.
+# Alternatively use SHOPMAN_JDBC_URL / SHOPMAN_JDBC_USER / SHOPMAN_JDBC_PASSWORD.
+shopman.jdbc.url=jdbc:mysql://localhost:3306/ShopMan?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+shopman.jdbc.user=root
+shopman.jdbc.password=CHANGE_ME

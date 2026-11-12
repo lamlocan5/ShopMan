@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+ <configuration default="false" name="ShopMan - IntelliJ" type="Application" factoryName="Application">
+  <option name="MAIN_CLASS_NAME" value="org.apache.catalina.startup.Bootstrap"/>
+  <module name="ShopMan"/>
+  <option name="PROGRAM_PARAMETERS" value="start"/>
+  <option name="VM_PARAMETERS" value="-Dfile.encoding=UTF-8 -Dcatalina.home=&quot;C:/Users/Admin/Downloads/apache-tomcat-9.0.112&quot; -Dcatalina.base=&quot;$PROJECT_DIR$/.runtime/intellij-tomcat&quot; -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.util.logging.config.file=&quot;$PROJECT_DIR$/.runtime/intellij-tomcat/conf/logging.properties&quot;"/>
+  <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$"/>
+  <shortenClasspath name="ARGS_FILE"/>
+  <method v="2"><option name="Make" enabled="true"/><option name="BuildArtifacts" enabled="true"><artifact name="ShopMan:war"/></option></method>
+ </configuration>
+</component>

@@ -1,0 +1,9 @@
+<%@ page import="model.Account6,view.ViewSupport6" %>
+<%
+    request.setCharacterEncoding("UTF-8");
+    response.setHeader("Cache-Control","no-store, no-cache, must-revalidate");
+    response.setHeader("X-Content-Type-Options","nosniff");
+    // Module 1 is public; do not create, read or require a login session.
+    Account6 sessionAccount=null;
+    if(!"GET".equals(request.getMethod())){response.setHeader("Allow","GET");response.sendError(405);return;}
+%>

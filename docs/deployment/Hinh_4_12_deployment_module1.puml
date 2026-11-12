@@ -1,0 +1,44 @@
+@startuml Hinh_4_12_deployment_module1
+left to right direction
+skinparam defaultFontName Times New Roman
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam nodesep 50
+skinparam ranksep 55
+title Triển khai ShopMan mô đun 1 theo mã nguồn
+node "Máy Windows hiện tại\nChạy thử cục bộ" as HOST <<device>> {
+ node "N1 Trình duyệt\nChrome hoặc Edge" as N1 <<executionEnvironment>>
+ node "N2 Phát triển và đóng gói\nIntelliJ IDEA + JDK 21" as N2 <<executionEnvironment>> {
+  artifact "P/src/{view,dao,model}/*.java\nP/WebContent/\nP/.idea, P/.run, ShopMan.iml" as SRC
+  artifact "P/dist/ShopMan.war" as BUILD
+ }
+ node "N3 JVM JDK 21 / Tomcat 9.0.112\nCATALINA_HOME = bộ cài Tomcat\nCATALINA_BASE = P/.runtime/intellij-tomcat" as N3 <<executionEnvironment>> {
+  artifact "CATALINA_BASE/webapps/ShopMan.war" as WAR {
+   artifact "index.jsp; khachhang/*.jsp\nassets/images/*.svg\nWEB-INF/web.xml\nWEB-INF/jspf/request6.jspf" as JSP
+   artifact "WEB-INF/classes/\nmodel/*.class; dao/*.class\nview/khachhang/*.class\nview/ViewSupport6.class\nshopman.properties (tạo từ example)" as CLASSES
+   artifact "WEB-INF/lib/\nmysql-connector-j-9.5.0.jar" as JDBC
+  }
+  artifact "CATALINA_BASE/conf/server.xml\n127.0.0.1:8081\nwork/: JSP sinh mã/lớp; logs/: nhật ký" as CONF
+  artifact "CATALINA_HOME/bin/\nbootstrap.jar; tomcat-juli.jar\nCATALINA_HOME/lib/\nservlet-api.jar; jsp-api.jar; el-api.jar\njasper.jar; jasper-el.jar; ecj-4.20.jar" as TOMCATLIB
+ }
+ node "N4 MySQL Server 8.0\nDịch vụ MySQL80 / TCP 3306" as N4 <<executionEnvironment>> {
+  database "Schema ShopMan\ntblCategory6, tblProduct6, tblProductVariant6\ntblWarehouse6, tblInventory6\nTài khoản tùy chọn: tblAccount6, tblCustomer6" as DB
+  artifact "MYSQL_DATA\nC:/ProgramData/MySQL/MySQL Server 8.0/Data" as DATA
+ }
+}
+N1 -- N3 : HTTP/TCP 8081
+/ShopMan/
+Tra cứu không đăng nhập
+N3 -- N4 : JDBC/TCP 3306
+DAO6.getConnection()
+SRC ..> BUILD : javac --release 8
+scripts/build-module1.ps1
+BUILD ..> WAR : <<deploy>>
+scripts/prepare-intellij.ps1
+hoặc IntelliJ artifact
+note bottom of N2
+P = C:/Users/Admin/Desktop/PTIT/PTTK-HTTT-NgocDTB/Bai8_final/ShopMan
+CATALINA_HOME = C:/Users/Admin/Downloads/apache-tomcat-9.0.112
+Chạy database/module1-schema.sql và module1-seed.sql vào MySQL.
+end note
+@enduml

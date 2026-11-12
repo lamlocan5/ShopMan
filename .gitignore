@@ -1,0 +1,21 @@
+/build/
+/dist/
+/.verification/
+/src/shopman.properties
+*.log
+/.runtime/
+/.idea/workspace.xml
+/.idea/shelf/
+
+# Local IDE state, credentials and generated output
+/out/
+*.class
+*.war
+/.idea/dataSources*
+/.idea/httpRequests/
+/.idea/*.local.xml
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db

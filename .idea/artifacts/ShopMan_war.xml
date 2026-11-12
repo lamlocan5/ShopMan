@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+ <artifact type="war" name="ShopMan:war">
+  <output-path>$PROJECT_DIR$/.runtime/intellij-tomcat/webapps</output-path>
+  <root id="archive" name="ShopMan.war">
+   <element id="directory-copy" path="$PROJECT_DIR$/WebContent"/>
+   <element id="directory" name="WEB-INF"><element id="directory" name="classes"><element id="module-output" name="ShopMan"/></element></element>
+  </root>
+ </artifact>
+</component>
